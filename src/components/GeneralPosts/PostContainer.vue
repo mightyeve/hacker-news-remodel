@@ -5,7 +5,7 @@
       .w-full.h-auto.border-4.border-transparent.p-1.overflow-hidden
         slot(name='upvoteContent')
     .bg-black.opacity-80.w-full.text-left.pl-3.text-white
-      slot(name='postContent')
+      slot(name='postContentContainer')
     .bg-black.opacity-80.pt-5.pr-4.text-white(class='w-1/16')
       slot(name='hide')
 

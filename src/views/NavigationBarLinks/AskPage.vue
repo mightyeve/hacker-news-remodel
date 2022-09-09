@@ -9,7 +9,8 @@ div
       | The impact of removing jQuery on our web performance
     div(slot='time') 3 hours ago
     div(slot='username') kevinak
-    div(slot='comments') comment
+    div(slot='comments')
+      router-link(to='/reply') comments
 
 </template>
 

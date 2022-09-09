@@ -74,6 +74,12 @@ const routes = [
     component: () =>
       import(/*webpackChunkName: "login" */ "../views/LoginPage/LoginPage.vue"),
   },
+  {
+    path: "/reply",
+    name: "reply",
+    component: () =>
+      import(/*webpackChunkName: "login" */ "../views/PostLinks/ReplyPage.vue"),
+  },
 ];
 
 const router = new VueRouter({

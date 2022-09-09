@@ -2,14 +2,14 @@
   <div id="app">
     <NavigationBar />
     <router-view />
-    <FooterChunk />
+    <FooterBar />
   </div>
 </template>
 
 <script>
 import NavigationBar from "./components/NavigationBar.vue";
-import FooterChunk from "./components/FooterChunk.vue";
+import FooterBar from "./components/FooterBar.vue";
 export default {
-  components: { NavigationBar, FooterChunk },
+  components: { NavigationBar, FooterBar },
 };
 </script>

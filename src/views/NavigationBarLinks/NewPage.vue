@@ -9,9 +9,9 @@ div
     div(slot='time') 3 hours ago
     div(slot='link') insidegovuk.blog.gov.uk
     div(slot='username') kevinak
-    div(slot='comments') comment
     div(slot='hide-enabled') hide
-  
+    div(slot='comments')
+      router-link(to='/reply') comments
 </template>
 
 <script>

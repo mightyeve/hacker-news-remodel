@@ -7,7 +7,7 @@
         .flex.flex-col.py-4.gap-4.text-white.mx-8
           input.rounded-md.outline-0.border-box.p-2.bg-gray-700.placeholder-yellow-600(style="font-weight: 700; border: 1px solid #3F3F3F;" type='text' placeholder='USERNAME')
           input.rounded-md.outline-0.border-box.p-2.bg-gray-700.placeholder-yellow-600(style="font-weight: 700; border: 1px solid #3F3F3F;" type='text' placeholder='PASSWORD')
-          button.p-3.px-5.pt-2.bg-yellow-700.rounded-xl.text-black.mx-auto.w-full(style="font-weight: 700;") LOGIN
+          button.p-3.px-5.pt-2.bg-yellow-700.rounded-xl.text-white.mx-auto.w-full(style="font-weight: 700;") LOGIN
           h1.text-center.py-2.text-white.text-sm.underline Forgot your password?
     .bar.mt-4.border-white.border-r-2
     signUp.mx-auto
@@ -16,5 +16,5 @@
         .flex.flex-col.py-4.gap-4.text-white.mx-8
           input.rounded-md.outline-0.border-box.p-2.bg-gray-700.placeholder-yellow-600(style="font-weight: 700; border: 1px solid #3F3F3F;" type='text' placeholder='USERNAME')
           input.rounded-md.outline-0.border-box.p-2.bg-gray-700.placeholder-yellow-600(style="font-weight: 700; border: 1px solid #3F3F3F;" type='text' placeholder='PASSWORD')
-          button.p-3.px-5.pt-2.bg-yellow-700.rounded-xl.text-black.mx-auto.w-full(style="font-weight: 700;") CREATE ACCOUNT
+          button.p-3.px-5.pt-2.bg-yellow-700.rounded-xl.text-white.mx-auto.w-full(style="font-weight: 700;") CREATE ACCOUNT
 </template>

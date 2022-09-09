@@ -13,8 +13,7 @@ div
     div(slot='title')
       | The impact of removing jQuery on our web performance
     div(slot='time') 3 hours ago
-    div(slot='link') comment
-
+    div(slot='link') link.com
 </template>
 
 <script>
