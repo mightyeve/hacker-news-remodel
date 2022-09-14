@@ -11,6 +11,8 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "noImplicitAny": false,
+    "allowJs": true,  
     "baseUrl": ".",
     "types": ["node"],
     "paths": {

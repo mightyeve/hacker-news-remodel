@@ -1,11 +1,11 @@
-<template>
-  <div id="app">
-    <NavigationBar />
-    <router-view />
-    <FooterBar />
-  </div>
+<template lang="pug">
+#app
+  .bg-general-post
+    NavigationBar
+    router-view
+    FooterBar
 </template>
-
+.bg-general-post
 <script>
 import NavigationBar from "./components/NavigationBar.vue";
 import FooterBar from "./components/FooterBar.vue";

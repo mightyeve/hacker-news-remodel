@@ -8,12 +8,12 @@ div
         h1.text-white.text-center.text-lg These jobs are at YC startups. See more at ycombinator.com/jobs
 
   JobsPost
-    div(slot='rank') 1.
-    div(slot='points') 178 pts
-    div(slot='title')
+    template(#rank) 1.
+    template(#points) 178 pts
+    template(#title)
       | The impact of removing jQuery on our web performance
-    div(slot='time') 3 hours ago
-    div(slot='link') link.com
+    template(#time) 3 hours ago
+    template(#link) link.com
 </template>
 
 <script>

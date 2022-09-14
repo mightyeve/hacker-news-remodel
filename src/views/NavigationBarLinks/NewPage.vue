@@ -1,22 +1,32 @@
 <template lang="pug">
 div
   h1 New
-  GeneralPost
-    div(slot='rank') 1.
-    div(slot='points') 178 pts
-    div(slot='title')
-      | The impact of removing jQuery on our web performance
-    div(slot='time') 3 hours ago
-    div(slot='link') insidegovuk.blog.gov.uk
-    div(slot='username') kevinak
-    div(slot='hide-enabled') hide
-    div(slot='comments')
-      router-link(to='/reply') comments
+  div(v-for="post in posts")
+    GeneralPost
+      template(#rank)
+        p.text-center.text-xl.p-1.text-white {{ post.rank + "."}}
+      template(#points) {{post.points  + " pts"}}
+      template(#title) {{ post.title }}
+      template(#time) {{ post.time + " hours ago"}}
+      template(#username) {{ post.username }}
+      template(#link) {{ post.link }}
+      template(#comments) 
+        router-link(:key='post.id' :to="{ name: 'reply', params: { id: post.id},}") comments
+      template(#hideContent) 
+        .underline hide
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import GeneralPost from "../../components/GeneralPosts/GeneralPost.vue";
-export default {
+import posts from "../../mock-data/PostInfo";
+
+export default Vue.extend({
   components: { GeneralPost },
-};
+  data() {
+    return {
+      posts: posts,
+    };
+  },
+});
 </script>

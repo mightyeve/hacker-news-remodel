@@ -1,14 +1,13 @@
 <template lang="pug">
 
 comment
-  OriginalPost
-    div(slot='rank') 1.
-    div(slot='points') 100 pts
-    div(slot='title') “Quantum-Safe” Crypto Hacked by 10-Year-Old PC
-    div(slot='time') 2 hours ago
-    div(slot='link') ieee.org
-    div(slot='username') oipoloi
-    div(slot='comments') 52 comments
+  OriginalPost(v-if='post')
+    div(slot='points') {{ post.points  + " pts"}}
+    div(slot='title') {{ post.title }}
+    div(slot='time') {{ post.time + " hours ago"}}
+    div(slot='link') {{ post.link }}
+    div(slot='username') {{ post.username }}
+    div(slot='comments') comments
     div(slot='hide-enabled') hide
     div(slot='past') Past
     div(slot='favorite') Favorite
@@ -54,11 +53,21 @@ comment
           button.p-2.pt-1.bg-yellow-700.rounded-xl.text-black.text-sm(style="font-weight: 700;") REPLY
 
 </template>
-<script>
+<script lang="ts">
+import Vue from "vue";
 import CommentPost from "../../components/CommentPosts/CommentPost.vue";
 import CommentContainer from "../../components/CommentPosts/CommentContainer.vue";
 import OriginalPost from "../../components/CommentPosts/OriginalPost.vue";
-export default {
+import PostInfo from "../../mock-data/PostInfo";
+export default Vue.extend({
   components: { OriginalPost, CommentPost, CommentContainer },
-};
+  props: {
+    id: { type: Number, required: true },
+  },
+  computed: {
+    post: function (): any {
+      return PostInfo.find((element) => element.id === this.id);
+    },
+  },
+});
 </script>

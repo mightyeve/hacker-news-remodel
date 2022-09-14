@@ -4,11 +4,11 @@ div
   CommentContainer
     div(slot="comment")
       CommentPost
-        div(slot='username') George
-        div(slot='description')
+        template(#username) George
+        template(#description)
           p Time | Context | hide
           p parent link
-        div(slot='comment-text')
+        template(#comment-text)
           p
             | Turbo (Ryan Reynolds) is a speed-obsessed snail with an unusual dream:
             | to become the world&apos;s greatest racer. This odd snail gets a chance to

@@ -1,15 +1,27 @@
 <template lang="pug">
 PostContainer
-  div(slot='upvoteContent')
+  template(#upvoteContentContainer)
     p.text-center.text-xl.p-1.text-white
       slot(name='rank')
       img.p-4(src='../../assets/Upvote.png')
       p.text-center.text-sm.p-1.text-white
         slot(name='points')
   template(#postContentContainer)
-    slot(name='postContent')
-  div(slot='hide')
-    slot(name='hide-enabled')
+    .text-lg.bg-gray-700.p-2.m-3.ml-0.rounded-xl
+      .text-yellow-500 
+        slot(name='title')
+    .py-1.pl-2.flex.flex-row
+      p(class='w-1/4') 
+        slot(name='time')
+      p(class='3/4') 
+        slot(name='username')
+    .pb-4.pl-2.flex.flex-row
+      p(class='w-1/4') 
+        slot(name='link')
+      p(class='3/4') 
+        slot(name='comments')
+  template(#hideContentContainer)
+    slot(name='hideContent')
 
 </template>
 

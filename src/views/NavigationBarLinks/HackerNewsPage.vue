@@ -1,45 +1,31 @@
 <template lang="pug">
 div
   h1 Hacker News Home Page
-  div(v-for="widget in widgets")
+  div(v-for="post in posts")
     GeneralPost
-      //
-        template(#rank) 
-          h1 {{ widget.rank }}.
-        template(slot='points') 178 pts
-        template(slot='title')
-          h1 {{ widget.title }}
-        template(slot='time') 3 hours ago
-        template(slot='link') insidegovuk.blog.gov.uk
-        template(slot='username') kevinak
-        template(slot='hide-enabled') hide
-        template(slot='comments')
-          router-link(to='/reply') comments
-      template(#postContent)
-        .text-lg.bg-gray-700.p-2.m-3.ml-0.rounded-xl
-          .text-yellow-500
-            h1 {{ widget.title }}
-        .py-1.flex.flex-row
-          p(class='w-1/4')
-            h1 {{ widget.title }}
-          p(class='3/4')
-            h1 {{ widget.title }}
-        .pb-4.flex.flex-row
-          p(class='w-1/4')
-            h1 {{ widget.title }}
-          p(class='3/4')
-            h1 {{ widget.title }}
+      template(#rank)
+        p.text-center.text-xl.p-1.text-white {{ post.rank + "."}}
+      template(#points) {{post.points  + " pts"}}
+      template(#title) {{ post.title}}
+      template(#time) {{ post.time + " hours ago"}}
+      template(#username) {{ post.username }}
+      template(#link) {{ post.link }}
+      template(#comments) 
+        router-link(:key='post.id' :to="{ name: 'reply', params: { id: post.id},}") comments
+      template(#hideContent) 
+        .underline hide
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import GeneralPost from "../../components/GeneralPosts/GeneralPost.vue";
-import widgets from "../../mock-data/widgets";
+import posts from "../../mock-data/PostInfo";
+
 export default Vue.extend({
   components: { GeneralPost },
   data() {
     return {
-      widgets: widgets,
+      posts: posts,
     };
   },
 });

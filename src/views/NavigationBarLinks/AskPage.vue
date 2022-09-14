@@ -2,14 +2,14 @@
 div
   h1 Ask
   AskPost
-    div(slot='rank') 1.
-    div(slot='points') 178 pts
-    div(slot='type') ASK HN:
-    div(slot='title')
+    template(#rank) 1.
+    template(#points) 178 pts
+    template(#type) ASK HN:
+    template(#title)
       | The impact of removing jQuery on our web performance
-    div(slot='time') 3 hours ago
-    div(slot='username') kevinak
-    div(slot='comments')
+    template(#time) 3 hours ago
+    template(#username) kevinak
+    template(#comments)
       router-link(to='/reply') comments
 
 </template>

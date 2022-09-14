@@ -1,12 +1,12 @@
 <template lang="pug">
 PostContainer
-    div(slot='upvoteContent')
+    template(#upvoteContentContainer)
         p.text-center.text-xl.p-1.text-white
             slot(name='rank')
             img.p-4(src='../../assets/Upvote.png')
             p.text-center.text-sm.p-1.text-white
                 slot(name='points')
-    div(slot='postContent')
+    template(#postContentContainer)
         h1.m-1.mt-3.text-xl.text-white.uppercase
             slot(name="type")
         .text-lg.bg-gray-700.p-2.m-3.ml-0.rounded-xl
