@@ -6,6 +6,11 @@ module.exports = {
       backgroundImage: {
         "general-post": "url('/src/assets/generalPostBg.png')",
       },
+      colors: {
+        "hn-orange": "#ff6600",
+        "light-orange": "#FF8A00",
+        "light-gray": "#373737",
+      },
     },
   },
   variants: {

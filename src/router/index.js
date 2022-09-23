@@ -75,11 +75,14 @@ const routes = [
       import(/*webpackChunkName: "login" */ "../views/LoginPage/LoginPage.vue"),
   },
   {
-    path: "/reply/:id",
+    path: "/reply/:category/:id",
     name: "reply",
     component: () =>
       import(/*webpackChunkName: "login" */ "../views/PostLinks/ReplyPage.vue"),
-    props: (route) => ({ id: parseInt(route.params.id) }),
+    props: (route) => ({
+      category: route.params.category,
+      id: parseInt(route.params.id),
+    }),
   },
 ];
 
