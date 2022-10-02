@@ -21,7 +21,7 @@ div.pt-8
       template(#comments)
         .flex.flex-row
           img.pr-2.pt-1.h-5(src='../../assets/PostIcons/comment.png')
-          router-link(:key='post.id' :to="{ name: 'reply', params: { category: 'home', id: post.id}}") comments
+          router-link(:key='post.id' :to="{ name: 'reply', params: { category: 'top', id: post.id}}") comments
       template(#hideContent) 
         .underline hide
   button.block.m-auto.mt-4.py-1.px-3.bg-light-orange.rounded-xl.text-black(style="font-weight: 700;" @click="loadMore") Load More
@@ -38,7 +38,7 @@ export default Vue.extend({
   components: { GeneralPost },
   data() {
     return {
-      category: "home",
+      category: "top",
       posts: posts1,
       limit: 30,
       topPost: topPosts(),

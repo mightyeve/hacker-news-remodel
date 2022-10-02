@@ -1,31 +1,54 @@
 <template lang="pug">
-div
-  h1 Comments
-  CommentContainer
-    div(slot="comment")
-      CommentPost
-        template(#username) George
-        template(#description)
-          p Time | Context | hide
-          p parent link
-        template(#comment-text)
-          p
-            | Turbo (Ryan Reynolds) is a speed-obsessed snail with an unusual dream:
-            | to become the world&apos;s greatest racer. This odd snail gets a chance to
-            | leave his slow-paced life behind when a freak accident gives him the
-            | power of superspeed. Newly revved-up, Turbo embarks on an
-            | extraordinary quest to enter and win the Indianapolis 500. Accompanied
-            | by a dedicated pit crew of trash-talking adrenaline junkies, Turbo
-            | becomes the ultimate underdog by refusing to let his limitations get
-            | in the way of his dreams.
+div.pt-8
+  div(v-for="(post, rank) in thirtyTopPost")
+    CommentContainer
+      div(slot="comment")
+        CommentPost
+          template(#username) 
+            h1.text-lg {{ post.by }}
+          template(#description)
+            .flex.flex-row.gap-2
+              img.pr-2.pt-1.h-5(src='../../assets/PostIcons/clock.png')
+              p {{ post.time }} 
+              p | Context | 
+              p hide
+            .flex.flex-row.gap-2
+              img.pr-2.mt-3.h-3(src='../../assets/PostIcons/quote.png')
+              p.py-2 on: 
+              p.py-2.underline {{ post.parent }}
+          template(#comment-text)
+            p {{ post.text}}
+  button.block.m-auto.mt-4.py-1.px-3.bg-light-orange.rounded-xl.text-black(style="font-weight: 700;" @click="loadMore") Load More
 
-</template>
+  </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import CommentPost from "../../components/CommentPosts/CommentPost.vue";
 import CommentContainer from "../../components/CommentPosts/CommentContainer.vue";
+import { topComments } from "@/api";
 
-export default {
+export default Vue.extend({
   components: { CommentPost, CommentContainer },
-};
+  data() {
+    return {
+      category: "home",
+      limit: 30,
+      topPost: topComments(),
+    };
+  },
+  computed: {
+    thirtyTopPost(): any {
+      // Pressing "Load More" button will reset the limit to 0 (false in ternary operator)
+      // crops out 30 topPost from the array otherwise because after button, limit = 30
+      return this.topPost.slice(0, this.limit);
+    },
+  },
+  methods: {
+    loadMore() {
+      if (this.limit > this.topPost.length) return;
+      this.limit = this.limit + 30;
+    },
+  },
+});
 </script>
