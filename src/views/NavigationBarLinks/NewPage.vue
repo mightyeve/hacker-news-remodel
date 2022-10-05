@@ -31,14 +31,12 @@ div.pt-20
 <script lang="ts">
 import Vue from "vue";
 import GeneralPost from "../../components/GeneralPosts/GeneralPost.vue";
-import posts1 from "../../mock-data/PostInfo";
 import { newPosts } from "@/api";
 
 export default Vue.extend({
   components: { GeneralPost },
   data() {
     return {
-      posts: posts1,
       limit: 30,
       newPost: newPosts(),
     };

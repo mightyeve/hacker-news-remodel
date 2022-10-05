@@ -1,13 +1,11 @@
 <template lang="pug">
 .comment.pt-20
-  template(v-if='loading')
-    .spinner SPUN SPUN
-    // here use a loaded you prefer
-  template(v-else)
-    | {{ rows }}
+  template
     OriginalPost(v-if='post')
       div(slot='points') {{ post.score  + " pts"}}
       div(slot='title') {{ post.title }}
+        div(v-if='post.text') 
+          p.text-white.text-lg {{ decodeHtml(post.text) }}
       div(slot='time') 
         .flex.flex-row
             img.pr-2.pt-1.h-5(src='../../assets/PostIcons/clock.png')
@@ -44,7 +42,7 @@
           div(slot='description')
             p 1 hour ago  |  hide 
           div(slot='comment-text')
-            p {{postComment.text}}
+            p {{decodeHtml(postComment.text)}}
           div(slot='reply-button')
             button.p-2.pt-1.bg-light-orange.rounded-xl.text-black.text-sm(style="font-weight: 700;") REPLY
 </template>
@@ -54,7 +52,6 @@ import Vue from "vue";
 import CommentPost from "../../components/CommentPosts/CommentPost.vue";
 import CommentContainer from "../../components/CommentPosts/CommentContainer.vue";
 import OriginalPost from "../../components/CommentPosts/OriginalPost.vue";
-import PostInfo from "../../mock-data/PostInfo";
 import {
   showPosts,
   askPosts,
@@ -87,21 +84,22 @@ export default Vue.extend({
       pastPosts: pastPosts(),
       askPosts: askPosts(),
       showPosts: showPosts(),
-      loading: false,
-      rows: [],
     };
   },
-  created() {
-    this.loader();
-  },
   methods: {
+    decodeHtml(html) {
+      // create an HTML div element
+      const txt = document.createElement("div");
+
+      // grab HTML markup from post.text
+      txt.innerHTML = html;
+
+      // grab text from the HTML
+      // innerText returns the visible text
+      return txt.innerText;
+    },
     async getCommentsArray() {
       this.commentsArray = await getPostComment(this.id);
-      this.loading = false;
-    },
-    loader() {
-      this.loading = true;
-      this.getCommentsArray();
     },
     postCategory() {
       if (this.category === "top") {

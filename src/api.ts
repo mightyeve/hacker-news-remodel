@@ -237,18 +237,18 @@ async function addTopComments(ids: number[], comments: number[]) {
     }
 */
 async function addPost(items: postInfo[], posts: number[]) {
-
+  posts = posts.slice(0, 60);
   // For each id number, fetch the post information from the api
   posts.forEach(async (id) => {
     const response = await fetch(baseUrl + "/item/" + `${id}.json`);
     const data = await response.json();
     data.time = getTimeSince(data.time);
-    
-
     // add to the array
     items.push(data);
   });
 }
+
+
 
 /*
   Populate items array with postInfo data FROM TODAY using list of post id numbers
@@ -266,7 +266,7 @@ async function addPost(items: postInfo[], posts: number[]) {
     }
 */
 async function addPostByDate(items: postInfo[], posts: number[]) {
-
+  posts = posts.slice(0, 60);
   // For each id number, fetch the post information from the api  
   posts.forEach(async (id) => {
     const response = await fetch(baseUrl + "/item/" + `${id}.json`);

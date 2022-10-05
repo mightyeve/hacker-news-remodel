@@ -19,7 +19,7 @@ div.pt-20
               p.py-2 on: 
               p.py-2.underline {{ post.parent }}
           template(#comment-text)
-            p {{ post.text}}
+            p {{ decodeHtml(post.text)}}
   button.block.m-auto.mt-4.py-1.px-3.bg-light-orange.rounded-2xl.text-black.font-ropa-sans.text-xl(style="font-weight: 700;" @click="loadMore") LOAD MORE
 
   </template>
@@ -47,6 +47,17 @@ export default Vue.extend({
     },
   },
   methods: {
+    decodeHtml(html) {
+      // create an HTML div element
+      const txt = document.createElement("div");
+
+      // grab HTML markup from post.text
+      txt.innerHTML = html;
+
+      // grab text from the HTML
+      // innerText returns the visible text
+      return txt.innerText;
+    },
     loadMore() {
       if (this.limit > this.topPost.length) return;
       this.limit = this.limit + 30;

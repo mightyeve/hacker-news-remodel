@@ -22,14 +22,12 @@ div
 <script lang="ts">
 import Vue from "vue";
 import JobsPost from "../../components/GeneralPosts/JobsPost.vue";
-import posts1 from "../../mock-data/PostInfo";
 import { jobPosts } from "@/api";
 
 export default Vue.extend({
   components: { JobsPost },
   data() {
     return {
-      posts: posts1,
       limit: 30,
       jobPost: jobPosts(),
     };

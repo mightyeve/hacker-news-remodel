@@ -40,14 +40,12 @@ div
 <script lang="ts">
 import Vue from "vue";
 import GeneralPost from "../../components/GeneralPosts/GeneralPost.vue";
-import posts1 from "../../mock-data/PostInfo";
 import { pastPosts } from "@/api";
 
 export default Vue.extend({
   components: { GeneralPost },
   data() {
     return {
-      posts: posts1,
       limit: 30,
       newPost: pastPosts(),
     };

@@ -32,7 +32,6 @@ div
 <script lang="ts">
 import Vue from "vue";
 import GeneralPost from "../../components/GeneralPosts/GeneralPost.vue";
-import posts1 from "../../mock-data/PostInfo";
 import { topPosts as showPosts } from "@/api";
 
 export default Vue.extend({
@@ -40,7 +39,6 @@ export default Vue.extend({
   data() {
     return {
       category: "top",
-      posts: posts1,
       limit: 30,
       showPost: showPosts(),
     };

@@ -6,7 +6,7 @@ div.pt-20
       template(#points) {{post.score  + " pts"}}
       // can't find indicator
       template(#title) {{ post.title }}
-      template(#text v-if='post.text')  {{ post.text }}
+      template(#text v-if='post.text')  {{ decodeHtml(post.text) }}
       template(#time) 
         .flex.flex-row
           img.pr-2.pt-1.h-5(src='../../assets/PostIcons/clock.png')
@@ -26,14 +26,12 @@ div.pt-20
 <script lang="ts">
 import Vue from "vue";
 import AskPost from "../../components/GeneralPosts/AskPost.vue";
-import posts1 from "../../mock-data/PostInfo";
 import { askPosts } from "@/api";
 
 export default Vue.extend({
   components: { AskPost },
   data() {
     return {
-      posts: posts1,
       limit: 30,
       askPost: askPosts(),
     };
@@ -46,6 +44,17 @@ export default Vue.extend({
     },
   },
   methods: {
+    decodeHtml(html) {
+      // create an HTML div element
+      const txt = document.createElement("div");
+
+      // grab HTML markup from post.text
+      txt.innerHTML = html;
+
+      // grab text from the HTML
+      // innerText returns the visible text
+      return txt.innerText;
+    },
     loadMore() {
       if (this.limit > this.askPost.length) return;
       this.limit = this.limit + 30;
