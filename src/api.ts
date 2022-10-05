@@ -99,6 +99,53 @@ export function askPosts(): postInfo[] {
   return items;
 }
 
+/*
+  Fetch show posts
+  Return format: [ 9129911, 9129199, 9127761, 9128141, 9128264, 9127792, 9129248, 9127092, 9128367, ..., 9038733 ]
+*/
+async function getShowPosts() {
+  let posts: number[] = [];
+  const response = await fetch(baseUrl + "/showstories.json");
+  posts = await response.json();
+  return posts;
+}
+
+// Function to call for showPosts
+export function showPosts(): postInfo[] {
+  const items: postInfo[] = [];
+
+  // Call getShowPosts() to get number array of ids from API
+  getShowPosts().then((posts) => {
+    // Call addPost() to get postInfo array for each ID
+    addPost(items, posts);
+  });
+
+  return items;
+}
+
+/*
+  Fetch job posts
+  Return format: [ 9129911, 9129199, 9127761, 9128141, 9128264, 9127792, 9129248, 9127092, 9128367, ..., 9038733 ]
+*/
+async function getJobPosts() {
+  let posts: number[] = [];
+  const response = await fetch(baseUrl + "/jobstories.json");
+  posts = await response.json();
+  return posts;
+}
+
+// Function to call for jobPosts
+export function jobPosts(): postInfo[] {
+  const items: postInfo[] = [];
+
+  // Call getJobPosts() to get number array of ids from API
+  getJobPosts().then((posts) => {
+    // Call addPost() to get postInfo array for each ID
+    addPost(items, posts);
+  });
+
+  return items;
+}
 
 
 // Function to call for past posts
@@ -264,6 +311,7 @@ async function getPostParent(id: number) {
   const posts = await response.json();
   return posts.title;
 }
+
 // Fetch comments for a post 
 async function addComment(comments: commentInfo[], post: commentInfo) {
   post.kids.forEach(async (comment) => {
@@ -272,7 +320,6 @@ async function addComment(comments: commentInfo[], post: commentInfo) {
     comments.push(data);
   });
 }
-
 
 
 // Convert "time" field of postsInfo from UNIX time

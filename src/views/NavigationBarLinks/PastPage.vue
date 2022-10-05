@@ -1,14 +1,16 @@
 <template lang="pug">
 div
-  .m-auto.px-7.py-2.min-h-100.overflow-hidden(class='w-2/5')
-    .flex.flex-row.overflow-hidden.rounded-2xl.shadow-md
-      .bg-black.opacity-70.text-white.uppercase.p-4(class='w-2/3')
-        h1.text-md.text-center stories from: {{ getTodaysDate }}
+  .m-auto.px-7.py-2.min-h-100.overflow-hidden.py-20(class='w-2/5')
+    .flex.flex-row.overflow-hidden.rounded-2xl.shadow-md.font-ropa-sans
+      .bg-black.opacity-70.text-white.uppercase.p-4.text-xl(class='w-2/3')
+        h1.text-center stories from: {{ getTodaysDate }}
       .bg-black.opacity-80.text-white.uppercase.p-4(class='w-1/3')
-        h1.text-white.uppercase change date
+        .flex.flex-row
+          img.pt-2.pr-2.h-6(src='../../assets/PostIcons/calendar.png')
+          h1.text-white.uppercase.text-md.p-1.bg-light-gray.rounded change date
   
   div(v-for="(post, rank) in thirtyTopPost")
-    GeneralPost
+    GeneralPost.text-xl
       template(#rank)
         p.text-center.text-xl.p-1.text-white {{ (rank + 1) + "."}}
       template(#points) {{post.score  + " pts"}}
@@ -22,16 +24,16 @@ div
           img.pr-2.pt-1.h-5(src='../../assets/PostIcons/profile.png')
           p {{ post.by }}
       template(#link v-if='post.url') 
-        .flex.flex-row
+        .flex.flex-row(class="hover:text-hn-orange")
           img.pr-2.pt-1.h-5(src='../../assets/PostIcons/link.png')
           a(:href="post.url") {{ post.url }}
       template(#comments)
-        .flex.flex-row
+        .flex.flex-row(class="hover:text-hn-orange")
           img.pr-2.pt-1.h-5(src='../../assets/PostIcons/comment.png')
           router-link(:key='post.id' :to="{ name: 'reply', params: { category: 'past', id: post.id}}") comments
       template(#hideContent) 
         .underline hide
-  button.block.m-auto.mt-4.py-1.px-3.bg-light-orange.rounded-xl.text-black(style="font-weight: 700;" @click="loadMore") Load More
+  button.block.m-auto.mt-4.py-1.px-3.bg-light-orange.rounded-2xl.text-black.font-ropa-sans.text-xl(style="font-weight: 700;" @click="loadMore") LOAD MORE
 
 </template>
 

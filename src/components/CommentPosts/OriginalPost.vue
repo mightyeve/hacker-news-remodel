@@ -1,29 +1,24 @@
 <template lang="pug">
 OriginalContainer
   template(#upvoteContent)
-    p.text-center.text-xl.p-1.text-white
+    p.text-center.p-1.text-white
       slot(name='rank')
       img.p-4(src='../../assets/Upvote.png')
-      p.text-center.text-sm.p-1.text-white
+      p.text-center.p-1.text-white
         slot(name='points')
   template(#postContent)
-    .text-lg.bg-gray-700.p-2.m-3.ml-0.rounded-xl
-      .text-yellow-500
+    .text-2xl.bg-light-gray.p-2.m-3.ml-0.rounded-xl
+      .text-light-orange.font-semibold
         slot(name='title')
-    .py-1.flex.flex-row.gap-60
-      p(class='w-1/4')
-        slot(name='time')
-      p(class='w-2/4')
+    .py-1.grid.grid-cols-4.gap-4
+      slot(name='time')
+      slot(name='favorite')
+      slot(name='past')
+      slot(name='comments')
+    .py-5.grid.grid-cols-4.gap-4
+      slot(name='username')
+      .col-span-3
         slot(name='link')
-      p(class='w-2/4')
-        slot(name='past')
-    .py-1.flex.flex-row.gap-60
-      p(class='w-1/4')
-        slot(name='username')
-      p(class='w-2/4')
-        slot(name='comments')
-      p(class='w-2/4')
-        slot(name='favorite')
   template(#hide)
     slot(name='hide-enabled')
   template(#replyForm)

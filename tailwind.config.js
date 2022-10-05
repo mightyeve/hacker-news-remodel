@@ -10,6 +10,11 @@ module.exports = {
         "hn-orange": "#ff6600",
         "light-orange": "#FF8A00",
         "light-gray": "#373737",
+        "dark-gray": "#313131",
+      },
+      fontFamily: {
+        "ropa-sans": ['"Ropa Sans"', "cursive"],
+        "advent-pro": ['"Advent Pro"', "cursive"],
       },
     },
   },

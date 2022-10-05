@@ -1,16 +1,25 @@
 <template lang="pug">
-div
+div.pt-20
   div(v-for="(post, rank) in thirtyTopPost")
     AskPost
       template(#rank) {{ (rank + 1) + "."}}
-      template(#points) {{ post.score }}
+      template(#points) {{post.score  + " pts"}}
       // can't find indicator
-      template(#type) {{ post.type }}
       template(#title) {{ post.title }}
-      template(#time) 3 hours ago
-      template(#username) kevinak
+      template(#text v-if='post.text')  {{ post.text }}
+      template(#time) 
+        .flex.flex-row
+          img.pr-2.pt-1.h-5(src='../../assets/PostIcons/clock.png')
+          p {{ post.time}}
+      template(#username)
+        .flex.flex-row
+            img.pr-2.pt-1.h-5(src='../../assets/PostIcons/profile.png')
+            p {{ post.by }}
       template(#comments)
-        router-link(to='/reply') comments
+        .flex.flex-row(class="hover:text-hn-orange")
+          img.pr-2.pt-1.h-5(src='../../assets/PostIcons/comment.png')
+          router-link(:key='post.id' :to="{ name: 'reply', params: { category: 'ask', id: post.id}}") comments
+  button.block.m-auto.mt-4.py-1.px-3.bg-light-orange.rounded-2xl.text-black.font-ropa-sans.text-xl(style="font-weight: 700;" @click="loadMore") LOAD MORE
 
 </template>
 

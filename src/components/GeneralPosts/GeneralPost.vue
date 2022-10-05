@@ -1,14 +1,14 @@
 <template lang="pug">
-PostContainer
+PostContainer.font-ropa-sans
   template(#upvoteContentContainer)
     p.text-center.text-xl.p-1.text-white
       slot(name='rank')
       img.p-4(src='../../assets/Upvote.png')
-      p.text-center.text-sm.p-1.text-white
+      p.text-center.text-md.p-1.text-white
         slot(name='points')
   template(#postContentContainer)
-    .text-lg.bg-light-gray.p-2.m-3.ml-0.rounded-xl
-      .text-light-orange.font-medium
+    .text-xl.bg-light-gray.p-2.m-3.ml-0.rounded-xl.font-advent-pro.font-extrabold
+      .text-light-orange
         slot(name='title')
     .py-1.pl-2.flex.flex-row
       p(class='w-1/4') 

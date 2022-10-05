@@ -1,7 +1,7 @@
 <template lang="pug">
-div.pt-8
+div.pt-20
   div(v-for="(post, rank) in thirtyTopPost")
-    GeneralPost
+    GeneralPost.text-xl
       template(#rank)
         p.text-center.text-xl.p-1.text-white {{ (rank + 1) + "."}}
       template(#points) {{post.score  + " pts"}}
@@ -15,16 +15,16 @@ div.pt-8
           img.pr-2.pt-1.h-5(src='../../assets/PostIcons/profile.png')
           p {{ post.by }}
       template(#link v-if='post.url') 
-        .flex.flex-row
+        .flex.flex-row(class="hover:text-hn-orange")
           img.pr-2.pt-1.h-5(src='../../assets/PostIcons/link.png')
           a(:href="post.url") {{ post.url }}
       template(#comments)
-        .flex.flex-row
+        .flex.flex-row(class="hover:text-hn-orange")
           img.pr-2.pt-1.h-5(src='../../assets/PostIcons/comment.png')
           router-link(:key='post.id' :to="{ name: 'reply', params: { category: 'new', id: post.id}}") comments
       template(#hideContent) 
         .underline hide
-  button.block.m-auto.mt-4.py-1.px-3.bg-light-orange.rounded-xl.text-black(style="font-weight: 700;" @click="loadMore") Load More
+  button.block.m-auto.mt-4.py-1.px-3.bg-light-orange.rounded-2xl.text-black.font-ropa-sans.text-xl(style="font-weight: 700;" @click="loadMore") LOAD MORE
 
 </template>
 
